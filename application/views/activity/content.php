@@ -1,5 +1,8 @@
 <div class="container">
   <h3>บันทึกกิจกรรม</h3>
+  <!-- <?php 
+    echo change_date_format('1999-06-04');
+  ?> -->
   <br>
   <div class="row">
     <div class="col-md-12">
@@ -25,13 +28,19 @@
         </tr>
       </thead>
       <tbody>
+
+        <?php foreach ($activity_data as $index => $obj) {?>
+
         <tr>
-          <th scope="row">1</th>
-          <td>กิจกรรมค่าย 4 ชั้นปี</td>
-          <td>12 เม.ย. - 15 เม.ย. 2563</td>
-          <td><a href="<?php echo base_url('index.php/activity/update'); ?>" type="button" class="btn btn-warning">แก้ไข</a>
-            <a href="<?php echo base_url('index.php/activity/delete'); ?>" type="button" class="btn btn-danger">ลบ</a></td>
+          <th scope="row"><?php echo $index+1 ?></th>
+          <td><?php echo $obj->activity_name; ?></td>
+          <td><?php echo change_date_format($obj->start_date).' - '.change_date_format($obj->end_date); ?></td>
+          <td>
+            <a href="<?php echo base_url('index.php/activity/update'); ?>" type="button" class="btn btn-warning">แก้ไข</a>
+            <a href="<?php echo base_url('index.php/activity/delete'); ?>" type="button" class="btn btn-danger">ลบ</a>
+          </td>
         </tr>
+      <?php }?>
       </tbody>
     </table>
   </div>
